@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+   
+    <title>Document</title>
+</head>
+<body>
+
+
+    <style>
+        #loader {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            display: none;
+        }
+        #loader:after {
+            content: " ";
+            display: block;
+            width: 18px;
+            height: 18px;
+            margin: 2px;
+            border-radius: 50%;
+            border: 2px solid #241f1f;
+            border-color: #241f1f transparent #241f1f transparent;
+            animation: lds-dual-ring 1.2s linear infinite;
+        }
+        @keyframes lds-dual-ring {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        #my-text-area {
+            display: block;
+            width: 20%;
+            margin-top: 16px;
+        }
+    </style>
+
+    <button id="get-text-btn">Student</button>
+    <div id="loader"></div>
+    <textarea id="my-text-area" rows="20"></textarea>
+
+
+
+
+
+    <script>
+
+
+   let button = document.getElementById("get-text-btn");
+            let textArea = document.getElementById("my-text-area");
+            let loader = document.getElementById("loader");
+
+            button.addEventListener("click", function() {
+
+                getData();
+            });
+            async function getData() {
+                try {
+                    loader.style.display = "inline-block";
+                    let response = await fetch('https://v-dresevic.github.io/Advanced-JavaScript-Programming/data/students.txt');
+                    if (response.status !== 200) {
+                        throw new Error("Error while reading file.");
+                    }
+                    let text = await response.text();
+                    textArea.innerHTML = text;
+                } catch (err) {
+                    textArea.innerHTML = 'Fetch problem: ' + err.message;
+                } finally {
+                    loader.style.display = "none";
+                }
+            }
+
+
+//===================================================
+
+
+function Student(name, addres, phone, course) {
+    this.name = name;
+    this.addres = addres;
+    this.phone = phone;
+    this.course = course;
+
+    this.getName = function() {
+        return "  " ;
+    }
+
+this.getInfo = function() {
+        return "Name: " + this.name + "\n" +
+            "Addres: " + this.addres + "\n" +
+            "Phone: " + this.phone + "\n" +
+            "Course: " + this.course 
+
+}
+
+}
+
+
+
+Student.prototype.getName = function () {
+    return  "  " ;
+}
+
+Student.prototype.getInfo = function() {
+        return "Name: " + this.name + "\n" +
+            "Addres: " + this.addres + "\n" +
+            "Phone: " + this.phone + "\n" +
+            "Course: " + this.course 
+
+}
+
+
+
+
+let student1 = new Student("Ebonie Rangel", "7175 Yukon Street", "(507) 833-3567", "Geography");
+
+             let student1Name = student1.getName();
+                let student1Info = student1.getInfo();
+
+           
+                
+     console.log(student1Name);
+     console.log(student1Info);
+
+    
+
+
+
+
+
+
+
+
+     function Convertible(name, addres, phone, course) {
+       
+       Student.call(this, name, addres, phone, course);  
+       }
+  
+      Convertible.prototype = Object.create(Student.prototype);
+      Convertible.prototype.connstructor = Convertible;
+  
+  
+      let Convertible1 = new Convertible("Keenan Ellwood", "2 Elm Lane", "(894) 831-6482", "History");
+  
+  
+      let Convertible1Name = Convertible1.getName();
+      let Convertible1Info = Convertible1.getInfo();
+  
+      console.log(Convertible1Name);
+      console.log(Convertible1Info);
+  
+  
+  
+  
+      function Convertible(name, addres, phone, course) {
+         
+         Student.call(this,name, addres, phone, course);  
+         }
+    
+        Convertible.prototype = Object.create(Student.prototype);
+        Convertible.prototype.connstructor = Convertible;
+    
+    
+        let Convertible2 = new Convertible("Kailan Smart", "795 Harvard Street", "(925) 856-5167", "History");
+    
+    
+        let Convertible2Name = Convertible2.getName();
+        let Convertible2Info = Convertible2.getInfo();
+    
+        console.log(Convertible2Name);
+        console.log(Convertible2Info);
+
+
+
+        
+
+     function Convertible(name, addres, phone, course) {
+       
+       Student.call(this, name, addres, phone, course);  
+       }
+  
+      Convertible.prototype = Object.create(Student.prototype);
+      Convertible.prototype.connstructor = Convertible;
+  
+  
+      let Convertible3 = new Convertible("Kaydan Hirst", "9 East Lakeview Ave.", "(939) 812-6141", "Programming");
+  
+  
+      let Convertible3Name = Convertible3.getName();
+      let Convertible3Info = Convertible3.getInfo();
+  
+      console.log(Convertible3Name);
+      console.log(Convertible3Info);
+       
+
+
+
+
+       
+     function Convertible(name, addres, phone, course) {
+       
+       Student.call(this, name, addres, phone, course);  
+       }
+  
+      Convertible.prototype = Object.create(Student.prototype);
+      Convertible.prototype.connstructor = Convertible;
+  
+  
+      let Convertible4 = new Convertible("Isabelle Prentice", "700 Rock Maple St.", "(899) 875-8627", "Match");
+  
+  
+      let Convertible4Name = Convertible4.getName();
+      let Convertible4Info = Convertible4.getInfo();
+  
+      console.log(Convertible4Name);
+      console.log(Convertible4Info);
+
+
+
+        
+
+    </script>
+    
+</body>
+</html>
